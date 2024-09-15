@@ -154,8 +154,6 @@ def update_title():
     minutes, seconds = divmod(remainder, 60)
     countdown = f" — Stream ends {hours:02d}:{minutes:02d}:{seconds:02d}"
 
-    new_title = f"Your Stream Title{countdown}"
-
     user_id = get_user_id()
     if not user_id:
         script_log("Failed to get user ID. Cannot update title.")
@@ -167,6 +165,22 @@ def update_title():
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json"
     }
+
+    # Get the current title
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        current_title = response.json()["data"][0]["title"]
+    except requests.exceptions.RequestException as e:
+        script_log(f"Failed to get current title: {e}")
+        return
+
+    # Remove any existing countdown from the current title
+    if " — Stream ends" in current_title:
+        current_title = current_title.split(" — Stream ends")[0]
+
+    new_title = current_title + countdown
+
     data = {"title": new_title}
     try:
         response = requests.patch(url, headers=headers, json=data)
