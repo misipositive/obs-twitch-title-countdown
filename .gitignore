@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# But don't ignore these files
+!README.md
+!.gitignore
+!LICENSE
+!obs_twitch_countdown.py
+
+# Ignore sensitive files
+config.json
+access_token.json
+__pycache__/
+*.pyc
