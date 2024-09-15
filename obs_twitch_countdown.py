@@ -9,9 +9,10 @@ import http.server
 import socketserver
 import socket
 
-# Global variables
-client_id = ""
-client_secret = ""
+# Global variables 
+# Add your Twitch application credentials here
+client_id = ""  # Your Twitch application client ID
+client_secret = ""  # Your Twitch application client secret
 redirect_uri = "http://localhost:8000"
 access_token = None
 channel_name = ""
