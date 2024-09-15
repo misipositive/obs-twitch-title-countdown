@@ -9,7 +9,8 @@ Appends a countdown timer to your Twitch stream title.
    - Category: Application Integration
 
 2. Place `obs_twitch_countdown.py` in your OBS scripts folder.
-   (Typically: `C:\Program Files\obs-studio\data\obs-plugins\frontend-tools\scripts`)
+
+(Typically: `C:\Program Files\obs-studio\data\obs-plugins\frontend-tools\scripts`)
 
 3. Open `obs_twitch_countdown.py` in a text editor and add your Twitch app credentials:
    ```python
